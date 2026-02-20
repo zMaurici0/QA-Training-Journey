@@ -2,13 +2,14 @@ import {test, expect} from '@playwright/test'
 
 // Testando Login em diferentes sites
 
-test('Login test 1', async({page}) => {
+test.only('Login test 1', async({page}) => {
     await page.goto('https://demo.applitools.com/');
-    await page.locator('id=username').fill('Mauricio');
-    await page.locator('id=password').fill('2345');
+    await page.pause()
+    await page.getByPlaceholder('Enter your username').fill('Mauricio')
+    await page.getByPlaceholder('Enter your password').fill('123321')
 
     await page.waitForSelector('text=Sign in', {timeout: 5000});
-    await page.locator('text=Sign in').click();
+    await page.getByText('Sign in').click();
     await page.close();
 })
 
@@ -22,7 +23,7 @@ test('Login test 2', async({page}) => {
     await page.close();
 })
 
-test.only('Login test 3', async({page}) => {
+test('Login test 3', async({page}) => {
     await page.pause();
     await page.goto('https://admin-demo.nopcommerce.com/login?returnUrl=%2Fadmin%2F');
     await page.getByRole('textbox', { name: 'Email:' }).press('Control+a');
