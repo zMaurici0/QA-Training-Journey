@@ -1,5 +1,7 @@
 import {test, expect} from '@playwright/test'
 
+// Testando Login em diferentes sites
+
 test('Login test 1', async({page}) => {
     await page.goto('https://demo.applitools.com/');
     await page.locator('id=username').fill('Mauricio');
