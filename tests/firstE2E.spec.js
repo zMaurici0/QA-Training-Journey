@@ -1,26 +1,13 @@
 import {test, expect} from '@playwright/test'
 
-test.describe('Login - Swag Labs', () => {
-
-    test('login Válido', async({page}) => {
+test.describe('Fluxo de compra - Swag Labs', () => {
+    
+    test.beforeEach('login', async({page}) => {
         await page.goto('https://www.saucedemo.com/');
         await page.getByPlaceholder('Username').fill('standard_user');
         await page.getByPlaceholder('Password').fill('secret_sauce');
         await page.getByRole('button', {name: 'Login'}).click();
 
-        await expect(page).toHaveURL(/inventory/);
-    })
-
-})
-
-test.describe('Fluxo de compra - Swag Labs', () => {
-
-    //Login
-     test.beforeEach(async ({ page }) => {
-        await page.goto('https://www.saucedemo.com/');
-        await page.getByPlaceholder('Username').fill('standard_user');
-        await page.getByPlaceholder('Password').fill('secret_sauce');
-        await page.getByRole('button', { name: 'Login' }).click();
         await expect(page).toHaveURL(/inventory/);
     })
 
