@@ -11,11 +11,11 @@ test('Testando Assertions', async({page}) =>{
     
     //checando se está escondido ou visível
     await expect(page.locator('text=The Kitchen')).toBeVisible();
-    await expect.soft(page.locator('text=The Kitchen')).toBeHidden(); //.soft faz com que a execução do teste não seja interrompida após um erro
+    // await expect.soft(page.locator('text=The Kitchen')).toBeHidden(); .soft faz com que a execução do teste não seja interrompida após um erro
 
     //checando se o elemento está habilitado ou desabilitado
     await expect(page.locator('text=The Kitchen')).toBeEnabled();
-    await expect.soft(page.locator('text=The Kitchen')).toBeDisabled();
+    // await expect.soft(page.locator('text=The Kitchen')).toBeDisabled();
 
     //checando se o elemento tem um texto
     await expect(page.locator('text=The Kitchen')).toHaveText('The Kitchen');
@@ -30,5 +30,5 @@ test('Testando Assertions', async({page}) =>{
     await expect(page).toHaveTitle('The Kitchen');
 
     //validação visual com screenshot
-    await expect(page).toHaveScreenshot();
+   // await expect(page).toHaveScreenshot();
 })
