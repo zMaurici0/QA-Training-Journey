@@ -28,7 +28,6 @@ test('Testando Assertions', async({page}) =>{
     //checando url e título da pag
     await expect(page).toHaveURL('https://kitchen.applitools.com/');
     await expect(page).toHaveTitle('The Kitchen');
-    await page.pause();
 
     //validação visual com screenshot
     await expect(page).toHaveScreenshot();
