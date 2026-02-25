@@ -10,21 +10,21 @@ Tecnologias
 - Node.js (npm)
 
 Estrutura do Projeto
-
+```
 ├── pages/                  # Page Object Model
 ├── tests/                  # Testes automatizados
 ├── playwright.config.js    # Configuração do Playwright
 ├── package.json            # Dependências e scripts
 ├── .gitignore
 ├── README.md
-
-📌 Organização dos Testes
+```
+Organização dos Testes
 
 Os testes estão divididos em arquivos dentro de tests/
 As páginas e objetos de interface estão em pages/
 A configuração geral está em playwright.config.js
 
-🚀 Como usar
+Como usar
 
 Clone o repositório:
 ```
@@ -49,8 +49,8 @@ npx playwright show-report
 
 Comandos úteis
 ```
-npx playwright test	/arquivo - para rodar um arquivo em específico
-npx playwright test --headed - para abrir o navegador e mostrar a execução	
-npx playwright test --project - para executar o teste em um navegador específico, ex: chromium
-npx playwright test	/arquivo --headed --project - juntando os três
+npx playwright test	/arquivo                              | para rodar um arquivo em específico
+npx playwright test --headed                              | para abrir o navegador e mostrar a execução	
+npx playwright test --project                             | para executar o teste em um navegador específico, ex: chromium
+npx playwright test	/arquivo --headed --project           | juntando os três
 ```
