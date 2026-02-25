@@ -1,4 +1,4 @@
-import {test} from '@playwright/test'
+import {test, expect} from '@playwright/test'
 import { LoginSauceDemo } from '../../pages/login_sauce'
 
 // Recriando o primeiro E2E q fiz, só que usando POM agora
@@ -10,7 +10,7 @@ test.describe('Login - SauceDemo', () => {
         const login = new LoginSauceDemo(page);
         await login.goto();
         await login.loginSauce('standard_user', 'secret_sauce');
-        await login.validarRedirecionamento();
+        await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html')
     })
 
     test('login com erro', async({page}) =>{
@@ -18,7 +18,8 @@ test.describe('Login - SauceDemo', () => {
         const login = new LoginSauceDemo(page);
         await login.goto();
         await login.loginSauce('ERRO', 'ERRO');
-        await login.validarErroLogin();
+        await expect(login.login_error).toBeVisible();
+        await expect(page).toHaveURL('https://www.saucedemo.com/'); 
     })
 
 })

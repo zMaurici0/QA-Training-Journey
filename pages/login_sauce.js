@@ -1,5 +1,3 @@
-import { expect } from "@playwright/test";
-
 export class LoginSauceDemo{
 
     constructor(page){
@@ -20,15 +18,6 @@ export class LoginSauceDemo{
         await this.username_textbox.fill(username);
         await this.password_textbox.fill(password);
         await this.login_button.click();
-    }
-
-    async validarRedirecionamento(){
-        await expect(this.page).toHaveURL('https://www.saucedemo.com/inventory.html') //valida se foi redirecionado
-    }
-
-    async validarErroLogin(){
-        await expect(this.login_error).toBeVisible()// valida se apareceu erro na tela
-        await expect(this.page).toHaveURL('https://www.saucedemo.com/'); // e valida se permaneceu na pagina
     }
 
 }
