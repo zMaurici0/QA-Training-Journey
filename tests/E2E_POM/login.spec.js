@@ -10,6 +10,7 @@ test.describe('Login - SauceDemo', () => {
         const login = new LoginSauceDemo(page);
         await login.goto();
         await login.loginSauce('standard_user', 'secret_sauce');
+
         await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html')
     })
 
@@ -18,6 +19,7 @@ test.describe('Login - SauceDemo', () => {
         const login = new LoginSauceDemo(page);
         await login.goto();
         await login.loginSauce('ERRO', 'ERRO');
+        
         await expect(login.login_error).toBeVisible();
         await expect(page).toHaveURL('https://www.saucedemo.com/'); 
     })
