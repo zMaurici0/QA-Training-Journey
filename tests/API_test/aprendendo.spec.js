@@ -1,77 +1,82 @@
 import {test, expect} from '@playwright/test'
 
-test ('API GET Request', async ({request}) => {
 
-    const response = await request.get('https://jsonplaceholder.typicode.com/users')
-    
-    //verificando se o status code = 200
-    expect(response.status()).toBe(200)
+test('Users API', () => {
 
-    const text = await response.text();
-    //verificando se contém um texto em específico
-    expect(text).toContain('Leanne Graham')
+    test('API GET Request', async ({request}) => {
 
-    //Escrever a resposta no console
-    console.log(await response.json());
-})
+        const response = await request.get('https://jsonplaceholder.typicode.com/users')
+        
+        expect(response.status()).toBe(200)
 
-test ('API Delete Request', async ({request}) => {
+        const body = await response.json()
 
-    const response = await request.delete('https://jsonplaceholder.typicode.com/users/1')
+        expect(body[0]).toMatchObject({
+            id: expect.any(Number),
+            name: expect.any(String),
+            email: expect.any(String)
+        })
+        expect(body[0].name).toBe('Leanne Graham')
 
-    expect(response.status()).toBe(200)
-    console.log(await response.json())
-
-})
-
-test('API Patch Request', async ({request}) => {
-
-    const response = await request.patch('https://jsonplaceholder.typicode.com/users/1', {
-
-        data:{
-            name:"Mauricio"
-        }
-    })
-    expect(response.status()).toBe(200)
-    console.log(await response.json())
-})
-
-test('API Post Request', async({request}) => {
-
-    const response = await request.post('https://jsonplaceholder.typicode.com/users', {
-
-        data: {
-            id: 2,
-            name: "Mauricio",
-            username: "Mota"
-        }
+        console.log(body[0]);
     })
 
-    expect(response.status()).toBe(201)
+    test('API Delete Request', async ({request}) => {
 
-    const text = await response.text();
-    expect(text).toContain('Mauricio')
+        const response = await request.delete('https://jsonplaceholder.typicode.com/users/1')
 
-    console.log(await response.json());
-    
-})
+        expect(response.status()).toBe(200)
+        console.log(await response.json())
 
-test('API Put Request', async({request}) => {
-
-    const response = await request.put('https://jsonplaceholder.typicode.com/users/1', {
-
-        data: {
-            id: 2,
-            name: "Mauricio",
-            username: "Cabanhas"
-        }
     })
 
-    expect(response.status()).toBe(200)
+    test('API Patch Request', async ({request}) => {
 
-    const text = await response.text();
-    expect(text).toContain('Cabanhas')
+        const response = await request.patch('https://jsonplaceholder.typicode.com/users/1', {
 
-    console.log(await response.json());
-    
+            data:{
+                name:"Mauricio"
+            }
+        })
+        expect(response.status()).toBe(200)
+        console.log(await response.json())
+    })
+
+    test('API Post Request', async({request}) => {
+
+        const response = await request.post('https://jsonplaceholder.typicode.com/users', {
+            data: {
+                name: "Mauricio",
+                username: "Mota"
+            }
+        })
+
+        expect(response.status()).toBe(201)
+
+        const text = await response.text();
+        expect(text).toContain('Mauricio')
+
+        console.log(await response.json());
+        
+    })
+
+    test('API Put Request', async({request}) => {
+
+        const response = await request.put('https://jsonplaceholder.typicode.com/users/1', {
+
+            data: {
+                name: "Mauricio",
+                username: "Cabanhas"
+            }
+        })
+
+        expect(response.status()).toBe(200)
+
+        const text = await response.text();
+        expect(text).toContain('Cabanhas')
+
+        console.log(await response.json());
+        
+    })
 })
+
