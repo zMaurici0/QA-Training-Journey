@@ -1,32 +1,38 @@
 import {test, expect} from '@playwright/test'
 
+test.describe('Users API', () => {
 
-test('Users API', () => {
+    test('API Get Request', async ({request}) => {
 
-    test('API GET Request', async ({request}) => {
-
-        const response = await request.get('https://jsonplaceholder.typicode.com/users')
+        const response = await request.get('https://jsonplaceholder.typicode.com/users');
         
-        expect(response.status()).toBe(200)
+        expect(response.status()).toBe(200);
 
-        const body = await response.json()
+        const body = await response.json();
 
         expect(body[0]).toMatchObject({
             id: expect.any(Number),
             name: expect.any(String),
             email: expect.any(String)
-        })
-        expect(body[0].name).toBe('Leanne Graham')
+        });
+        expect(body[0].name).toBe('Leanne Graham');
 
         console.log(body[0]);
     })
 
+    test('API Get - usuário inexistente', async ({request}) => {
+        
+        const response = await request.get('https://jsonplaceholder.typicode.com/users/99999');
+
+        expect(response.status()).toBe(404);
+    })
+
     test('API Delete Request', async ({request}) => {
 
-        const response = await request.delete('https://jsonplaceholder.typicode.com/users/1')
+        const response = await request.delete('https://jsonplaceholder.typicode.com/users/1');
 
-        expect(response.status()).toBe(200)
-        console.log(await response.json())
+        expect(response.status()).toBe(200);
+        console.log(await response.json());
 
     })
 
@@ -37,9 +43,9 @@ test('Users API', () => {
             data:{
                 name:"Mauricio"
             }
-        })
-        expect(response.status()).toBe(200)
-        console.log(await response.json())
+        });
+        expect(response.status()).toBe(200);
+        console.log(await response.json());
     })
 
     test('API Post Request', async({request}) => {
@@ -49,12 +55,12 @@ test('Users API', () => {
                 name: "Mauricio",
                 username: "Mota"
             }
-        })
+        });
 
-        expect(response.status()).toBe(201)
+        expect(response.status()).toBe(201);
 
         const text = await response.text();
-        expect(text).toContain('Mauricio')
+        expect(text).toContain('Mauricio');
 
         console.log(await response.json());
         
@@ -68,15 +74,18 @@ test('Users API', () => {
                 name: "Mauricio",
                 username: "Cabanhas"
             }
-        })
+        });
 
-        expect(response.status()).toBe(200)
+        expect(response.status()).toBe(200);
 
         const text = await response.text();
-        expect(text).toContain('Cabanhas')
+        expect(text).toContain('Cabanhas');
 
         console.log(await response.json());
         
     })
+
 })
+
+    
 
