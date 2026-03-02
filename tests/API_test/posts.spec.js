@@ -1,18 +1,39 @@
 import {test, expect} from '@playwright/test'
-import { createPrivateKey, randomInt } from 'node:crypto';
+import { randomInt } from 'node:crypto';
 import { createUser, CreatePost } from './helpers';
+
+/* criando um usuário novo para garantir isolamento do teste. Cada teste deve ser independente,
+não pode depender de dados já existentes ou criados por outros testes. 
+Isso evita conflitos (ex: email duplicado), falhas por exclusão externa e 
+problemas ao rodar testes em paralelo. */
 
 test.describe('GET', () => {
 
-    test('Teste de post existente', async ({request}) => {
+    test('Teste de post existente | criar novo usuário -> criar novo post -> testar post', async ({request}) => {
 
-        const response = await request.get('https://gorest.co.in/public/v2/posts/272549');
-        const body = await response.json();
+        const randomNumber = randomInt(200);
 
+        // Criando usuário
+        const {id_usuario, status, body } = await createUser(request, randomNumber);
+        expect(status.status()).toBe(201);
+
+        console.log(`Usuário ${body.name} criado`);
+
+        //Criando post
+        const {id_post, status_post, body_post} = await CreatePost(request, id_usuario, randomNumber);
+        expect(status_post.status()).toBe(201);
+
+        console.log(`Post ${body_post.title} criado`);
+
+        // testando se retorna 200 OK
+        const response = await request.get(`https://gorest.co.in/public/v2/posts/${id_post}`);
         expect(response.status()).toBe(200);
 
-        console.log(body);
+        console.log(body_post);
     })
+
+
+    // dia 02/03, eu queria deixar esses 2 testes abaixo independentes hoje, mas a API GoRest caiu e está retornando status code 500, vou continuar com outra API e depois volto aq
 
     test('Teste de post inexistente', async ({request}) => {
 
