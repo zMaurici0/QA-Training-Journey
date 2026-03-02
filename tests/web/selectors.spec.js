@@ -1,4 +1,4 @@
-import {test, except} from "@playwright/test"
+import {test} from "@playwright/test"
 
 test('Selectors Demo', async({page}) => {
 

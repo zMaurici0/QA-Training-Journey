@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test'
 import { randomInt } from 'node:crypto'
-import { DeletarProduto, FazerLogin, NovoProduto } from './helpers_servrest'
+import { DeletarProduto, FazerLogin, NovoProduto } from '../../api/helpers_servrest'
 
 // Usando a API ServeRest
 // por ser uma API publica, para tornar cada teste independente irei criar um produto novo a cada teste e aí fazer o teste com esse produto
 
-test.describe(' GET - Produtos', () => {
+test.describe(' CRUD - Produtos', () => {
 
     test('Validação de produto existente ', async ({ request }) => {
 
@@ -56,6 +56,7 @@ test.describe(' GET - Produtos', () => {
         // Criando produto
         const randomNumber = randomInt(200)
         const { status_produto, body_produto, id_produto } = await NovoProduto(request, randomNumber, token)
+        
         //Deletando produto
         const { status_delete, body_delete } = await DeletarProduto(request, id_produto, token)
 

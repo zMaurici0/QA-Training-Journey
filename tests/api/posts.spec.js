@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test'
 import { randomInt } from 'node:crypto';
-import { createUser, CreatePost } from './helpers';
+import { createUser, CreatePost } from '../../api/helpers';
 
 /* criando um usuário novo para garantir isolamento do teste. Cada teste deve ser independente,
 não pode depender de dados já existentes ou criados por outros testes. 
