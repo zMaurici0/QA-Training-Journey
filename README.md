@@ -1,7 +1,7 @@
 # 👋 Sobre
 
-Este projeto faz parte da minha jornada de aprendizado em Quality Assurance (QA) com foco em testes automatizados usando Playwright no JavaScript.
-O objetivo é praticar frameworks de teste, estruturar cenários e ganhar experiência com execução de testes, geração de relatórios e automação básica de UI.
+Este repositório faz parte da minha jornada de aprendizado em Quality Assurance (QA) com foco em testes automatizados usando Playwright no JavaScript.
+O objetivo é praticar frameworks de teste, estruturar cenários e ganhar experiência com execução de testes.
 
 # 🛠️ Tecnologias
 
@@ -11,8 +11,12 @@ O objetivo é praticar frameworks de teste, estruturar cenários e ganhar experi
 
 # 📋 Estrutura do Projeto
 ```
+├──  api/
 ├── pages/                  # Page Object Model
-├── tests/                  # Testes automatizados
+├── tests/
+   ── api/
+   ── web/
+   ── web_POM                 # Testes automatizados
 ├── playwright.config.js    # Configuração do Playwright
 ├── package.json            # Dependências e scripts
 ├── .gitignore
@@ -22,6 +26,7 @@ O objetivo é praticar frameworks de teste, estruturar cenários e ganhar experi
 
 Os testes estão divididos em arquivos dentro de tests/
 As páginas e objetos de interface estão em pages/
+Helpers estão em api/
 A configuração geral está em playwright.config.js
 
 # 🚀 Como usar
