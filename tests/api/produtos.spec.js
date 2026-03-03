@@ -73,4 +73,53 @@ test.describe(' CRUD - Produtos', () => {
 
     })
 
+    test('Atualizando dados de um produto existente', async ({request}) => {
+
+        //Login
+        const { status, token, body } = await FazerLogin(request)
+        expect(status.status()).toBe(200)
+        console.log(body.message)
+
+        // Criando produto
+        const randomNumber = randomInt(400)
+        const { status_produto, body_produto, id_produto } = await NovoProduto(request, randomNumber, token)
+
+        expect(status_produto.status()).toBe(201)
+
+        // Atualizando dados
+        const response = await request.put(`https://serverest.dev/produtos/${id_produto}`, {
+            headers: {
+                Authorization: token
+            },
+            data:{
+                nome: `Razer Kitsune ${randomNumber}`,
+                preco: 1000,
+                descricao: 'Hitbox Controller',
+                quantidade: 230
+            }
+        });
+
+        expect(response.status()).toBe(200)
+        console.log(`dados atualizados com sucesso!`)
+        
+        //validando
+        const response_atualizado = await request.get(`https://serverest.dev/produtos/${id_produto}`)
+        const json = await response_atualizado.json()
+         expect(json).toMatchObject({
+            _id: id_produto,
+            nome: `Razer Kitsune ${randomNumber}`,
+            preco: 1000,
+            descricao: 'Hitbox Controller',
+            quantidade: 230
+        })
+        console.log(json)
+
+        //limpando api
+        const { status_delete, body_delete } = await DeletarProduto(request, id_produto, token)
+
+        expect(status_delete.status()).toBe(200)
+        console.log(body_delete)
+
+    })
+
 })
