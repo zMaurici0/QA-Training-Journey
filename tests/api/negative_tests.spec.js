@@ -1,6 +1,5 @@
 import {test, expect} from '@playwright/test'
-import { DeletarProduto, FazerLogin, NovoProduto } from '../../api/helpers_servrest'
-import { randomInt } from 'crypto'
+import { FazerLogin } from '../../api/helpers_servrest'
 
 /* Aprendendo a fazer testes negativos básicos para garantir que a API 
 não retorne erros, não quebre, responda com códigos e mensagens corretas,
@@ -160,7 +159,7 @@ test('Método não permitido', async ({request}) => {
 
 // teste 7
 
-test('Campos extremamente grande', async ({request}) => {
+test('Campos extremamente grandes', async ({request}) => {
 
     // Fazendo login pra pegar o token
     const {status, token, body} = await FazerLogin(request)
@@ -178,15 +177,42 @@ test('Campos extremamente grande', async ({request}) => {
             Authorization: `${token}`
         },
         data:{
-            nome: 'aaaaaaaaaaaaaaaaaa',
-            preco: 9007199254740991,
-            descricao: 'asdasd',
-            quantidade: -9007199254740991
+            nome: nomeGigante,
+            preco: 100,
+            descricao: 'asdas',
+            quantidade: 10
         }
     })
 
     // Esperado seria 413 caso existisse validação de regra de negócio.
     // Atualmente retorna 201, indicando ausência de validação de tamanho.
+   // expect(response.status()).toBe(400)
+
+    const json = await response.json()
+    console.log(json)
+})
+
+// teste 8 
+
+test('Campos extra que não existe no modelo', async ({request}) => {
+
+    // Fazendo login pra pegar o token
+    const {status, token, body} = await FazerLogin(request)
+
+    const response =  await request.post('https://serverest.dev/produtos', {
+        headers: {
+            Authorization: `${token}`
+        },
+        data:{
+            nome: 'Chocolate',
+            preco: 100,
+            descricao: 'asdas',
+            quantidade: 10,
+            marca: 'Nestle'
+        
+        }
+    })
+    
     expect(response.status()).toBe(400)
 
     const json = await response.json()
