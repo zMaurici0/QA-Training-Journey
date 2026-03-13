@@ -13,7 +13,6 @@ senha diferente de standad_user -> inválido
 
 ## Casos de teste
 
-CT01 – username: standard_user, senha: secret_sauce = válido
-CT02 – username: nome errado, senha: secret_sauce = inválido
-CT03 – username: standard_user, senha: senha errada = inválido
-
+CT01 – username válido + senha válida
+CT02 – username inválido + senha válida 
+CT03 – username inválido + senha válida
