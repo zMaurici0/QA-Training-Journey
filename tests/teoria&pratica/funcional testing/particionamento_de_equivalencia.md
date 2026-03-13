@@ -5,8 +5,8 @@ Funcionalidade: Login
 
 ## Partições
 
-username = qualquer usuário permitodo no site -> válido
-username = usuário errado -> inválido
+username = qualquer usuário permitido no sistema -> válido
+username = usuário não cadastrado -> inválido
 
 senha = secret_sauce -> válido
 senha diferente de standad_user -> inválido
