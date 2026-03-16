@@ -1,4 +1,6 @@
-# Teste Funcional - Particionamento de Equivalência
+# Teste Funcional - Teste Funcional Sistemático
+
+ Teste Funcional Sistemático é uma técnica que consiste em testar de forma organizada diferentes combinações de entradas e condições do sistema. O objetivo é verificar se a funcionalidade se comporta corretamente em diversos cenários possíveis, incluindo casos válidos, inválidos e limites, garantindo uma cobertura mais completa da funcionalidade.
 
 Sistema: Sauce Demo
 Funcionalidade: Login
@@ -13,6 +15,7 @@ username = caracteres especiais -> inválido
 senha = secret_sauce -> válido
 senha = diferente de standad_user -> inválido
 senha = vazia -> inválido
+
 ## Casos de teste
 
 CT01 – username válido + senha válida

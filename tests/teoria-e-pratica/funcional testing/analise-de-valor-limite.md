@@ -1,10 +1,9 @@
 # Teste Funcional - Análise de valor limite
 
+ A Análise de Valor Limite é uma técnica de teste que busca identificar falhas testando valores próximos aos limites de entrada de um sistema. Como a documentação da API não define um tamanho máximo para o campo firstName, foram utilizados valores progressivamente maiores para observar como a API se comporta em diferentes tamanhos de entrada.
+
 Sistema: Dummy JSON
 Funcionalidade: Criação de usuário
-
-Como a documentação da API não define limite de caracteres, foram testados
-valores progressivamente maiores.
 
 ## Valores Testados
 
