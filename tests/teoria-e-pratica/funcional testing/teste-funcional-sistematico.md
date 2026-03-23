@@ -7,20 +7,20 @@ Funcionalidade: Login
 
 ## Partições
 
-username = qualquer usuário permitido no sistema -> válido
-username = usuário não cadastrado -> inválido
-username = vazio -> inválido
-username = caracteres especiais -> inválido
-
-senha = secret_sauce -> válido
-senha = diferente de standad_user -> inválido
-senha = vazia -> inválido
+- username = qualquer usuário permitido no sistema -> válido
+- username = usuário não cadastrado -> inválido
+- username = vazio -> inválido
+- username = caracteres especiais -> inválido
+------------------------------------------------------------
+- senha = secret_sauce -> válido
+- senha = diferente de standad_user -> inválido
+- senha = vazia -> inválido
 
 ## Casos de teste
 
-CT01 – username válido + senha válida
-CT02 – username inválido + senha válida
-CT03 – username válido + senha inválida
+- CT01 – username válido + senha válida
+- CT02 – username inválido + senha válida
+- CT03 – username válido + senha inválida
 CT04 – username vazio
 CT05 – senha vazia
 CT06 – username com 1 caractere
