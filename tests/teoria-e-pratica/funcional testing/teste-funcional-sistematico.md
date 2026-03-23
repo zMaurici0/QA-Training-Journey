@@ -21,9 +21,9 @@ Funcionalidade: Login
 - CT01 – username válido + senha válida
 - CT02 – username inválido + senha válida
 - CT03 – username válido + senha inválida
-CT04 – username vazio
-CT05 – senha vazia
-CT06 – username com 1 caractere
-CT07 – username com muitos caracteres
-CT08 – username com caracteres especiais
-CT09 – username com espaço
+- CT04 – username vazio
+- CT05 – senha vazia
+- CT06 – username com 1 caractere
+- CT07 – username com muitos caracteres
+- CT08 – username com caracteres especiais
+- CT09 – username com espaço
