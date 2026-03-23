@@ -8,18 +8,18 @@ Funcionalidade: Criação de usuário
 ## Valores Testados
 
 Campo FirstName:
-1 caractere
-20 caracteres
-100 caracteres
-1000 caracteres
+- 1 caractere
+- 20 caracteres
+- 100 caracteres
+- 1000 caracteres
 
 
 ## Casos de teste
 
-CT01 – Nome com 1 caractere
-CT02 – Nome com 20 caracteres
-CT03 – Nome com 100 caracteres
-CT04 – Nome com 1000 caracteres
+- CT01 – Nome com 1 caractere
+- CT02 – Nome com 20 caracteres
+- CT03 – Nome com 100 caracteres
+- CT04 – Nome com 1000 caracteres
 
 ## Resultados
 
